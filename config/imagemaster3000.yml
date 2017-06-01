@@ -1,0 +1,15 @@
+imagemaster3000:
+  definitions-dir: # If set, definitions in this direcotry are used to download and modify images
+  image-dir: /var/spool/imagemaster3000/images/ # Directory where to temporarily store images
+  image-list: /var/spool/imagemaster3000/image-list/imagemaster3000.list # Name and path of generated image list
+  endpoint: http://localhost/ # Endpoint where image list will be available
+  certificate: /etc/grid-security/cert.pem # Certificate to sign image list with
+  key: /etc/grid-security/key.pem # Key to sign image list with
+  group: imagemaster3000 # Group, images will be uploaded to
+  binaries:
+    virt-copy-in: /usr/bin/virt-copy-in # Path to binary needed for 'copy' action
+    guestfish: /usr/bin/guestfish # Path to binary needed for 'remove' action
+  logging:
+    level: ERROR # Logging level
+    file: /var/log/imagemaster3000/imagemaster3000.log # File to write log to. To turn off file logging leave this field empty.
+  debug: false # Debug mode

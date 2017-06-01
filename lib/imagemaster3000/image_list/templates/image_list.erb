@@ -1,0 +1,41 @@
+{
+  "hv:imagelist":{
+    "dc:date:created":"<%= Time.now.strftime('%Y-%m-%dT%H:%M:%SZ') %>",
+    "dc:date:expires":"<%= (Time.now + 6.months).strftime('%Y-%m-%dT%H:%M:%SZ') %>",
+    "dc:description":"CESNET MetaCloud image list",
+    "dc:identifier":"imagemaster3000-metacloud",
+    "dc:source":"https://cloud.metacentrum.cz/",
+    "dc:title":"CESNET MetaCloud",
+    "ad:vo": "<%= Imagemaster3000::Settings[:group] %>",
+    "hv:images":[
+<% images.each_with_index do |image, index| -%>
+      {
+        "hv:image":{
+          "dc:description":"<%= image.name %>",
+          "dc:identifier":"<%= image.name %>",
+          "ad:mpuri":"imagemaster3000-metacloud",
+          "dc:title":"<%= image.name %>",
+          "hv:hypervisor":"QEMU-KVM",
+<% if image.ram -%>
+          "hv:ram_minimum": "<%= image.ram %>",
+<% end -%>
+<% if image.cpu -%>
+          "hv:core_minimum": "<%= image.cpu %>",
+<% end -%>
+          "hv:format":"qcow2",
+          "hv:size":"<%= image.size %>",
+          "hv:uri":"<%= File.join(Imagemaster3000::Settings[:endpoint], File.basename(image.file)) %>",
+          "hv:version":"<%= image.version %>",
+<% if image.verification -%>
+          "sl:checksum:sha512":"<%= image.verification[:hash][:checksum] %>",
+<% end -%>
+          "sl:os":"Linux",
+          "sl:osname":"<%= image.distribution %>",
+          "sl:osversion":"<%= image.version %>",
+          "sl:arch": "x86_64"
+        }
+      }<%= ',' if index < (images.size - 1) %>
+<% end -%>
+    ]
+  }
+}

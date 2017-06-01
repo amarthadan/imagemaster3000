@@ -1,0 +1,17 @@
+{
+  "name":"METACLOUD-Ubuntu-14.04-x86_64@metacloud-dukan",
+  "url":"https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img",
+  "verification":{
+    "signature":{
+      "detached":{
+        "signature":"https://cloud-images.ubuntu.com/trusty/current/SHA256SUMS.gpg",
+        "data":"https://cloud-images.ubuntu.com/trusty/current/SHA256SUMS"
+      }
+    },
+    "hash":{
+      "function":"SHA256"
+    }
+  },
+  "distribution":"Ubuntu",
+  "version":"14.04"
+}

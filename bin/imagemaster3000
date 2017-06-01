@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'imagemaster3000'
+
+Imagemaster3000::CLI.start(ARGV)

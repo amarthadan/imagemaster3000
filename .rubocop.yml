@@ -1,0 +1,38 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.0
+  Exclude:
+    - 'vendor/**/*'
+
+Metrics/LineLength:
+  Max: 135
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/AbcSize:
+  Max: 20
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 3
+
+Metrics/ParameterLists:
+  Exclude:
+    - 'lib/imagemaster3000/entities/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '*.gemspec'
