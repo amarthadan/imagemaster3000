@@ -14,6 +14,12 @@
       "title":"Target",
       "type":"string"
     },
+    "name":{
+      "description":"New name of the copied file",
+      "id":"#name",
+      "title":"Name",
+      "type":"string"
+    },
     "copy":{
       "additionalItems":false,
       "id":"#copy",
@@ -25,6 +31,9 @@
           },
           "target":{
             "$ref":"#/definitions/target"
+          },
+          "name":{
+            "$ref":"#/definitions/name"
           }
         },
         "required":[
