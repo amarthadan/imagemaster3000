@@ -12,5 +12,18 @@
     }
   },
   "distribution":"CentOS",
-  "version":"7.3-1704"
+  "version":"7.3-1704",
+  "actions":{
+    "copy":[
+      {
+        "source":"centos-cloud.cfg",
+        "target":"/etc/cloud/",
+        "name":"cloud.cfg"
+      },
+      {
+        "source":"serial-getty@ttyS0.service",
+        "target":"/etc/systemd/system/getty.target.wants/"
+      }
+    ]
+  }
 }

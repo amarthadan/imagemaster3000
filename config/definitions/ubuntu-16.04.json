@@ -13,5 +13,18 @@
     }
   },
   "distribution":"Ubuntu",
-  "version":"16.04"
+  "version":"16.04",
+  "actions":{
+    "copy":[
+      {
+        "source":"ubuntu-cloud.cfg",
+        "target":"/etc/cloud/",
+        "name":"cloud.cfg"
+      },
+      {
+        "source":"serial-getty@ttyS0.service",
+        "target":"/etc/systemd/system/getty.target.wants/"
+      }
+    ]
+  }
 }
