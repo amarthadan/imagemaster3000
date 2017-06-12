@@ -4,6 +4,7 @@ require 'gpgme'
 module Imagemaster3000
   autoload :CLI, 'imagemaster3000/cli'
   autoload :Settings, 'imagemaster3000/settings'
+  autoload :Cleaner, 'imagemaster3000/cleaner'
   autoload :MainProcess, 'imagemaster3000/main_process'
 
   autoload :Errors, 'imagemaster3000/errors'

@@ -7,11 +7,12 @@ module Imagemaster3000
         logger.debug "Downloading image from #{url.inspect}"
 
         uri = URI.parse url
-        filename = generate_filename(uri)
+        filename = generate_filename
+        @local_filename = filename
+        @remote_filename = File.basename(uri.path)
         retrieve_image(uri, filename)
 
         logger.debug "Image from #{url.inspect} was saved as #{filename.inspect}"
-        @file = filename
         @size = File.size filename
       rescue ::URI::InvalidURIError, ::IOError => ex
         raise Imagemaster3000::Errors::DownloadError, ex
@@ -39,8 +40,8 @@ module Imagemaster3000
         raise Imagemaster3000::Errors::DownloadError, ex
       end
 
-      def generate_filename(uri)
-        File.join(Imagemaster3000::Settings[:'image-dir'], File.basename(uri.path))
+      def generate_filename
+        File.join(Imagemaster3000::Settings[:'image-dir'], SecureRandom.hex)
       end
     end
   end

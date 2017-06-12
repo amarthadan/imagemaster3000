@@ -9,6 +9,9 @@ module Imagemaster3000
       logger.debug 'Generating image list'
       image_list = Imagemaster3000::ImageList::Signer.sign(Imagemaster3000::ImageList::Generator.generate(images))
       File.write Imagemaster3000::Settings[:'image-list'], image_list
+      Imagemaster3000::Cleaner.clean
+    ensure
+      Imagemaster3000::Cleaner.write_clean_file images.map(&:local_filename)
     end
 
     private
@@ -16,7 +19,7 @@ module Imagemaster3000
     def process_image(image)
       image.download
       image.verify! if image.respond_to? :verify!
-      image.actions.each { |action| action.run image.file } unless image.actions.blank?
+      image.actions.each { |action| action.run image.local_filename } unless image.actions.blank?
     end
   end
 end

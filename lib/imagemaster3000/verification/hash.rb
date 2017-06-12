@@ -4,15 +4,15 @@ module Imagemaster3000
       def verify_hash!
         logger.debug 'Verifying checksum'
         checksum = find_checksum!
-        computed_checksum = verification[:hash][:function].file(file).hexdigest
+        computed_checksum = verification[:hash][:function].file(local_filename).hexdigest
 
         if checksum == computed_checksum
-          verification[:hash][:checksum] = ::Digest::SHA512.file(file).hexdigest
+          verification[:hash][:checksum] = ::Digest::SHA512.file(local_filename).hexdigest
           return
         end
 
         raise Imagemaster3000::Errors::VerificationError,
-              "Checksum mismatch for file #{file}: expected: #{checksum}, was: #{computed_checksum}"
+              "Checksum mismatch for file #{local_filename}: expected: #{checksum}, was: #{computed_checksum}"
       end
 
       private
@@ -23,7 +23,7 @@ module Imagemaster3000
 
       def find_checksum_line
         checksum_list = verification[:hash][:list]
-        filename = File.basename(file)
+        filename = remote_filename
 
         logger.debug "Looking for filename #{filename.inspect} in list \n#{checksum_list}"
 
@@ -32,7 +32,7 @@ module Imagemaster3000
           unless found_lines.count == 1
 
         checksum_line = found_lines.first
-        logger.debug "Found mathcing line #{checksum_line.inspect}"
+        logger.debug "Found matching line #{checksum_line.inspect}"
 
         checksum_line
       end

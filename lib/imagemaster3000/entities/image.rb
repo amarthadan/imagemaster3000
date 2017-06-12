@@ -3,7 +3,7 @@ module Imagemaster3000
     class Image
       include Downloadable
 
-      attr_accessor :name, :url, :distribution, :version, :ram, :cpu, :actions, :verification, :file, :size
+      attr_accessor :name, :url, :distribution, :version, :ram, :cpu, :actions, :verification, :local_filename, :remote_filename, :size
 
       def initialize(name: nil, url: nil, distribution: nil, version: nil, ram: nil, cpu: nil, actions: nil, verification: nil)
         raise Imagemaster3000::Errors::ArgumentError, 'name, url, distribution or version cannot be nil' \

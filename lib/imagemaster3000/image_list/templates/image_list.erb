@@ -24,7 +24,7 @@
 <% end -%>
           "hv:format":"qcow2",
           "hv:size":"<%= image.size %>",
-          "hv:uri":"<%= File.join(Imagemaster3000::Settings[:endpoint], File.basename(image.file)) %>",
+          "hv:uri":"<%= File.join(Imagemaster3000::Settings[:endpoint], File.basename(image.local_filename)) %>",
           "hv:version":"<%= image.version %>",
 <% if image.verification -%>
           "sl:checksum:sha512":"<%= image.verification[:hash][:checksum] %>",
