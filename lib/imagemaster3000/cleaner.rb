@@ -7,7 +7,7 @@ module Imagemaster3000
         return unless File.exist? CLEAN_FILE
 
         logger.debug 'Cleaning old images'
-        files = File.read(CLEAN_FILE).lines.map(&:strip)
+        files = File.read(CLEAN_FILE).lines.reject { |line| line =~ /^\s+$/ }.map(&:strip)
         files.each do |file|
           logger.debug "Removing file #{file.inspect}"
           File.delete file if File.exist? file
