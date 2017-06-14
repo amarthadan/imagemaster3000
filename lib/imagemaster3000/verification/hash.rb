@@ -27,7 +27,7 @@ module Imagemaster3000
 
         logger.debug "Looking for filename #{filename.inspect} in list \n#{checksum_list}"
 
-        found_lines = checksum_list.lines.grep(/#{filename}\s*$/)
+        found_lines = checksum_list.lines.grep(/\s+#{filename}\s*$/)
         raise Imagemaster3000::Errors::VerificationError, "Cannot identify checksum for file #{file.inspect}" \
           unless found_lines.count == 1
 
