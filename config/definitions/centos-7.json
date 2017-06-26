@@ -1,5 +1,5 @@
 {
-  "name":"METACLOUD-CentOS-7.3-1704-x86_64@metacloud-dukan",
+  "name":"METACLOUD-CentOS-7-x86_64@metacloud-dukan",
   "url":"http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1704.qcow2",
   "verification":{
     "signature":{
