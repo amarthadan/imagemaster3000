@@ -1,11 +1,11 @@
 {
-  "name":"METACLOUD-Debian-8.7.1-x86_64@metacloud-dukan",
-  "url":"https://cdimage.debian.org/cdimage/openstack/current/debian-8.8.1-20170521-openstack-amd64.qcow2",
+  "name":"METACLOUD-Debian-8-x86_64@metacloud-dukan",
+  "url":"https://cdimage.debian.org/cdimage/openstack/8.8.2-20170620/debian-8.8.2-20170620-openstack-amd64.qcow2",
   "verification":{
       "signature":{
         "detached":{
-          "signature": "https://cdimage.debian.org/cdimage/openstack/current/SHA256SUMS.sign",
-          "data": "https://cdimage.debian.org/cdimage/openstack/current/SHA256SUMS"
+          "signature": "https://cdimage.debian.org/cdimage/openstack/8.8.2-20170620/SHA256SUMS.sign",
+          "data": "https://cdimage.debian.org/cdimage/openstack/8.8.2-20170620/SHA256SUMS"
         }
       },
       "hash":{
@@ -13,7 +13,7 @@
       }
   },
   "distribution":"Debian",
-  "version":"8.8.1",
+  "version":"8.8.2",
   "actions":{
     "remove":[
       "/etc/cloud/cloud.cfg.d/90_dpkg.cfg"
