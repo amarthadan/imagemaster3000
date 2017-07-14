@@ -20,7 +20,7 @@ SHELL ["/bin/bash", "-c"]
 # update + dependencies
 RUN apt-get update && \
     apt-get --assume-yes upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install ruby ruby-dev libguestfs-tools linux-image-generic bzip2 gcc make
+    DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install ruby ruby-dev libguestfs-tools linux-image-generic bzip2 gcc make git
 
 # imagemaster3000
 RUN gem install ${name} -v "${version}" --no-document
