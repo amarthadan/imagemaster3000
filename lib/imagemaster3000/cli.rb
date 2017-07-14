@@ -17,10 +17,11 @@ module Imagemaster3000
                  type: :boolean,
                  desc: 'Runs in debug mode'
 
-    method_option :'definitions-dir',
-                  default: Imagemaster3000::Settings['definitions-dir'],
+    method_option :'definitions-git-repo',
+                  default: Imagemaster3000::Settings['definitions-git-repo'],
                   type: :string,
-                  desc: 'If set, definitions in this direcotry are used to download and modify images'
+                  required: true,
+                  desc: 'Definitions in this git repository are used to download and modify images'
     method_option :'image-dir',
                   default: Imagemaster3000::Settings['image-dir'],
                   type: :string,
@@ -83,10 +84,6 @@ module Imagemaster3000
     def initialize_configuration(options)
       Imagemaster3000::Settings.clear
       Imagemaster3000::Settings.merge! options.to_hash
-
-      gem_dir = File.realdirpath(File.join(File.dirname(__FILE__), '..', '..'))
-      Imagemaster3000::Settings[:'definitions-dir'] = File.join(gem_dir, 'config', 'definitions') \
-        unless Imagemaster3000::Settings[:'definitions-dir']
     end
 
     def initialize_logger
