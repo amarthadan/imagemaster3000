@@ -9,15 +9,14 @@ module Imagemaster3000
       generate_image_list
       Imagemaster3000::Cleaner.clean
     ensure
-      Imagemaster3000::Cleaner.write_clean_file images.map(&:local_filename)
-      definitions.clean
+      Imagemaster3000::Cleaner.write_clean_file images.map(&:local_filename) if images
+      definitions.clean if definitions
     end
 
     private
 
     def process_definitions
-      logger.debug "Download definitions from #{Imagemaster3000::Settings['definitions-git-repo'].inspect}"
-      @definitions = Imagemaster3000::Definitions::Downloader.new Imagemaster3000::Settings['definitions-git-repo']
+      @definitions = Imagemaster3000::Definitions::Downloader.download_definitions
       Imagemaster3000::Settings['definitions-dir'] = definitions.path
       logger.debug 'Loading images from definitions'
       @images = Imagemaster3000::Definitions::Parser.parse_image_definitions

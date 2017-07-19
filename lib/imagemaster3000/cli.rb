@@ -17,11 +17,15 @@ module Imagemaster3000
                  type: :boolean,
                  desc: 'Runs in debug mode'
 
-    method_option :'definitions-git-repo',
-                  default: Imagemaster3000::Settings['definitions-git-repo'],
+    method_option :'definitions-repository',
+                  default: Imagemaster3000::Settings['definitions']['repository'],
                   type: :string,
                   required: true,
-                  desc: 'Definitions in this git repository are used to download and modify images'
+                  desc: 'Repository from which image definitions will be downloaded'
+    method_option :'definitions-branch',
+                  default: Imagemaster3000::Settings['definitions']['branch'],
+                  type: :string,
+                  desc: 'Repository branch that will be used'
     method_option :'image-dir',
                   default: Imagemaster3000::Settings['image-dir'],
                   type: :string,
