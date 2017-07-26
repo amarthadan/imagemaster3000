@@ -3,10 +3,8 @@ module Imagemaster3000
     module Hash
       def verify_hash!
         logger.debug 'Verifying checksum'
-        checksum = find_checksum!
         computed_checksum = verification[:hash][:function].file(local_filename).hexdigest
-
-        if checksum == computed_checksum
+        if checksum_present? computed_checksum
           verification[:hash][:checksum] = ::Digest::SHA512.file(local_filename).hexdigest
           return
         end
@@ -17,28 +15,14 @@ module Imagemaster3000
 
       private
 
-      def find_checksum!
-        split_checksum find_checksum_line
-      end
-
-      def find_checksum_line
+      def checksum_present?(checksum)
         checksum_list = verification[:hash][:list]
-        filename = remote_filename
-
-        logger.debug "Looking for filename #{filename.inspect} in list \n#{checksum_list}"
-
-        found_lines = checksum_list.lines.grep(/\s+\*?#{filename}\s*$/)
-        raise Imagemaster3000::Errors::VerificationError, "Cannot identify checksum for file #{filename.inspect}" \
-          unless found_lines.count == 1
-
-        checksum_line = found_lines.first
-        logger.debug "Found matching line #{checksum_line.inspect}"
-
-        checksum_line
-      end
-
-      def split_checksum(checksum_line)
-        checksum_line.split.first
+        logger.debug "Looking for hash #{checksum.inspect} in list \n#{checksum_list}"
+        found_lines = checksum_list.lines.grep(/^#{checksum}\s+/)
+        raise Imagemaster3000::Errors::VerificationError, "#{found_lines.count} checksum matches - matches #{found_lines.inspect}" \
+          unless found_lines.count > 1
+        logger.debug "Hash found in line #{found_lines.first.inspect} in list \n#{checksum_list}"
+        true
       end
     end
   end
