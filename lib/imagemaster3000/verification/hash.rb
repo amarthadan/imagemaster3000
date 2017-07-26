@@ -10,7 +10,7 @@ module Imagemaster3000
         end
 
         raise Imagemaster3000::Errors::VerificationError,
-              "Checksum mismatch for file #{local_filename}: expected: #{checksum}, was: #{computed_checksum}"
+              "Not exactly one checksum found for file #{local_filename}: expected: #{checksum}, was: #{computed_checksum}"
       end
 
       private
@@ -19,10 +19,9 @@ module Imagemaster3000
         checksum_list = verification[:hash][:list]
         logger.debug "Looking for hash #{checksum.inspect} in list \n#{checksum_list}"
         found_lines = checksum_list.lines.grep(/^#{checksum}\s+/)
-        raise Imagemaster3000::Errors::VerificationError, "#{found_lines.count} checksum matches - matches #{found_lines.inspect}" \
-          unless found_lines.count > 1
-        logger.debug "Hash found in line #{found_lines.first.inspect} in list \n#{checksum_list}"
-        true
+        logger.debug "#{found_lines.count} checksum matches"
+        logger.debug " List of matching lines: #{found_lines.inspect}" if found_lines.count > 0
+        found_lines.count == 1
       end
     end
   end
