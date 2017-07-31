@@ -10,7 +10,7 @@ module Imagemaster3000
         end
 
         raise Imagemaster3000::Errors::VerificationError,
-              "Not exactly one checksum found for file #{local_filename}: expected: #{checksum}, was: #{computed_checksum}"
+              "Not exactly one checksum found for file #{local_filename}: expected: #{computed_checksum}"
       end
 
       private
