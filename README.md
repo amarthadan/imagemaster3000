@@ -23,7 +23,7 @@ bundle exec rake spec
 ## Usage
 ```
 Usage:
-  imagemaster3000 start --binaries-guestfish=BINARIES-GUESTFISH --binaries-virt-copy-in=BINARIES-VIRT-COPY-IN --certificate=CERTIFICATE --definitions-repository=DEFINITIONS-REPOSITORY --endpoint=ENDPOINT --group=GROUP --image-dir=IMAGE-DIR --image-list=IMAGE-LIST --key=KEY
+  imagemaster3000 start --binaries-guestfish=BINARIES-GUESTFISH --binaries-virt-copy-in=BINARIES-VIRT-COPY-IN --certificate=CERTIFICATE --definitions-repository=DEFINITIONS-REPOSITORY --endpoint=ENDPOINT --group=GROUP --image-dir=IMAGE-DIR --image-list-path=IMAGE-LIST --key=KEY
 
 Options:
   --definitions-repository=DEFINITIONS-REPOSITORY  # Repository from which image definitions will be downloaded
@@ -32,7 +32,7 @@ Options:
                                                    # Default: /var/spool/imagemaster3000/images/
   --group=GROUP                                    # Group, images will be uploaded to
                                                    # Default: imagemaster3000
-  --image-list=IMAGE-LIST                          # Name and path of generated image list
+  --image-list-path=IMAGE-LIST                     # Name and path of generated image list
                                                    # Default: /var/spool/imagemaster3000/image-list/imagemaster3000.list
   --endpoint=ENDPOINT                              # Endpoint where image list will be available
                                                    # Default: http://localhost/

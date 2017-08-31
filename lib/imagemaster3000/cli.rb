@@ -36,9 +36,9 @@ module Imagemaster3000
                   default: Imagemaster3000::Settings['group'],
                   type: :string,
                   desc: 'Group, images will be uploaded to'
-    method_option :'image-list',
+    method_option :'image-list-path',
                   required: true,
-                  default: Imagemaster3000::Settings['image-list'],
+                  default: Imagemaster3000::Settings['image-list']['path'],
                   type: :string,
                   desc: 'Name and path of generated image list'
     method_option :endpoint,
