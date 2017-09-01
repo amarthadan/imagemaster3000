@@ -40,7 +40,28 @@ module Imagemaster3000
                   required: true,
                   default: Imagemaster3000::Settings['image-list']['path'],
                   type: :string,
-                  desc: 'Name and path of generated image list'
+                  desc: 'Name and path of generated image list'      
+    method_option :'image-list-description',
+                  required: true,
+                  default: Imagemaster3000::Settings['image-list']['description'],
+                  type: :string,
+                  desc: 'Imagelist description required by cloudkeeper'
+    method_option :'image-list-identifier',
+                  required: true,
+                  default: Imagemaster3000::Settings['image-list']['identifier'],
+                  type: :string,
+                  desc: 'Imagelist identifier required by cloudkeeper'
+    method_option :'image-list-source',
+                  required: true,
+                  default: Imagemaster3000::Settings['image-list']['source'],
+                  type: :string,
+                  desc: 'Imagelist source required by cloudkeeper'
+    method_option :'image-list-mpuri',
+                  required: true,
+                  default: Imagemaster3000::Settings['image-list']['mpuri'],
+                  type: :string,
+                  desc: 'Imagelist mpuri required by cloudkeeper'
+
     method_option :endpoint,
                   required: true,
                   default: Imagemaster3000::Settings['endpoint'],
