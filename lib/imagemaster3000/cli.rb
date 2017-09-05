@@ -40,7 +40,7 @@ module Imagemaster3000
                   required: true,
                   default: Imagemaster3000::Settings['image-list']['path'],
                   type: :string,
-                  desc: 'Name and path of generated image list'      
+                  desc: 'Name and path of generated image list'
     method_option :'image-list-description',
                   required: true,
                   default: Imagemaster3000::Settings['image-list']['description'],

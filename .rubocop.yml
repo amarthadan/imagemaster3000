@@ -5,6 +5,11 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
 
+Metrics/ClassLength:
+  Max: 120
+  Exclude:
+    - 'lib/imagemaster3000/cli.rb'
+
 Metrics/LineLength:
   Max: 135
 
