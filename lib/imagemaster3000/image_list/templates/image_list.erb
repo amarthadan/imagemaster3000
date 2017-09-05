@@ -2,9 +2,9 @@
   "hv:imagelist":{
     "dc:date:created":"<%= Time.now.strftime('%Y-%m-%dT%H:%M:%SZ') %>",
     "dc:date:expires":"<%= (Time.now + 6.months).strftime('%Y-%m-%dT%H:%M:%SZ') %>",
-    "dc:description":"<%= Imagemaster3000::Settings[:'image-list'][:description] %>",
-    "dc:identifier":"<%= Imagemaster3000::Settings[:'image-list'][:identifier] %>",
-    "dc:source":"<%= Imagemaster3000::Settings[:'image-list'][:source] %>",
+    "dc:description":"<%= Imagemaster3000::Settings[:'image-list-description'] %>",
+    "dc:identifier":"<%= Imagemaster3000::Settings[:'image-list-identifier'] %>",
+    "dc:source":"<%= Imagemaster3000::Settings[:'image-list-source'] %>",
     "ad:vo": "<%= Imagemaster3000::Settings[:group] %>",
     "hv:images":[
 <% images.each_with_index do |image, index| -%>
@@ -12,7 +12,7 @@
         "hv:image":{
           "dc:description":"<%= image.name %>",
           "dc:identifier":"<%= image.name %>",
-          "ad:mpuri":"<%= Imagemaster3000::Settings[:'image-list'][:mpuri] %>",
+          "ad:mpuri":"<%= Imagemaster3000::Settings[:'image-list-mpuri'] %>",
           "dc:title":"<%= image.name %>",
           "hv:hypervisor":"QEMU-KVM",
 <% if image.ram -%>

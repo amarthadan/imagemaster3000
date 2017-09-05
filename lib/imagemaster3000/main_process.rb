@@ -35,7 +35,7 @@ module Imagemaster3000
     def generate_image_list
       logger.debug 'Generating image list'
       image_list = Imagemaster3000::ImageList::Signer.sign(Imagemaster3000::ImageList::Generator.generate(images))
-      File.write Imagemaster3000::Settings[:'image-list'][:path], image_list
+      File.write Imagemaster3000::Settings[:'image-list-path'], image_list
     end
   end
 end
