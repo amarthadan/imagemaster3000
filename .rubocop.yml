@@ -1,7 +1,7 @@
 require: rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.0
+  TargetRubyVersion: 2.2
   Exclude:
     - 'vendor/**/*'
 
@@ -21,6 +21,10 @@ Metrics/AbcSize:
 
 Style/Documentation:
   Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - 'lib/imagemaster3000/entities/image.rb'
 
 RSpec/MultipleExpectations:
   Enabled: false
