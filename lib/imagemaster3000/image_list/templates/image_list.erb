@@ -14,6 +14,7 @@
           "dc:identifier":"<%= image.name %>",
           "ad:mpuri":"<%= Imagemaster3000::Settings[:'image-list-mpuri'] %>",
           "dc:title":"<%= image.name %>",
+          "dc:date:expires":"<%= (Time.now + 6.months).strftime('%Y-%m-%dT%H:%M:%SZ') %>",
           "hv:hypervisor":"QEMU-KVM",
 <% if image.ram -%>
           "hv:ram_minimum": "<%= image.ram %>",
