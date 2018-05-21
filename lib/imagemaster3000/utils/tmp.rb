@@ -1,4 +1,3 @@
-require 'open-uri'
 require 'tempfile'
 
 module Imagemaster3000
@@ -7,7 +6,7 @@ module Imagemaster3000
       def self.download(url)
         file = Tempfile.new('imagemaster3000')
         logger.debug "Downloading file from url #{url} to tempfile #{file.path.inspect}"
-        download = open(url)
+        download = URI.parse(url).open
         IO.copy_stream(download, file)
 
         file.rewind
