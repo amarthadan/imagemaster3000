@@ -6,8 +6,8 @@ module Imagemaster3000
     class Tmp
       def self.download(url)
         file = Tempfile.new('imagemaster3000')
-        download = open(url)
         logger.debug "Downloading file from url #{url} to tempfile #{file.path.inspect}"
+        download = open(url)
         IO.copy_stream(download, file)
 
         file.rewind
@@ -15,6 +15,8 @@ module Imagemaster3000
       end
 
       def self.destroy(file)
+        return unless file
+
         logger.debug "Closing tempfile #{file.path.inspect}"
         file.close
         file.unlink
