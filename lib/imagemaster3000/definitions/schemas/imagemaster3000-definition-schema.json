@@ -20,6 +20,18 @@
       "title":"Name",
       "type":"string"
     },
+    "linkname":{
+      "description":"Link file",
+      "id":"#linkname",
+      "title":"Link",
+      "type":"string"
+    },
+    "symbolic":{
+      "description":"Whether created link should be symbolic",
+      "id":"#symbolic",
+      "title":"Symbolic",
+      "type":"boolean"
+    },
     "copy":{
       "additionalItems":false,
       "id":"#copy",
@@ -54,6 +66,30 @@
       },
       "type":"array"
     },
+    "link":{
+      "additionalItems":false,
+      "id":"#link",
+      "items":{
+        "additionalProperties":false,
+        "properties":{
+          "target":{
+            "$ref":"#/definitions/target"
+          },
+          "link":{
+            "$ref":"#/definitions/linkname"
+          },
+          "symbolic":{
+            "$ref":"#/definitions/symbolic"
+          }
+        },
+        "required":[
+          "target",
+          "link"
+        ],
+        "type":"object"
+      },
+      "type":"array"
+    },
     "actions":{
       "additionalProperties":false,
       "id":"#actions",
@@ -63,6 +99,9 @@
         },
         "remove":{
           "$ref":"#/definitions/remove"
+        },
+        "link":{
+          "$ref":"#/definitions/link"
         }
       },
       "type":"object"
